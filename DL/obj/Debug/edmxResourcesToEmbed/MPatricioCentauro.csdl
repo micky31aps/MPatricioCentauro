@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MPatricioCentauroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="GPS_DATA">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DateSystem" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateSystem" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateEvent" Type="DateTime" Precision="3" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="Battery" Type="Int32" />
+    <Property Name="Source" Type="Int32" />
+    <Property Name="Tipo" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="MPatricioCentauroEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="GPS_DATA" EntityType="Self.GPS_DATA" />
+    <FunctionImport Name="GpsDelete">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GpsGetAll" ReturnType="Collection(MPatricioCentauroModel.GpsGetAll_Result)" />
+    <FunctionImport Name="GpsGetById" ReturnType="Collection(MPatricioCentauroModel.GpsGetById_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GpsAdd">
+      <Parameter Name="DateSystem" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEvent" Mode="In" Type="DateTime" />
+      <Parameter Name="Latitude" Mode="In" Type="Double" />
+      <Parameter Name="Longitude" Mode="In" Type="Double" />
+      <Parameter Name="Battery" Mode="In" Type="Int32" />
+      <Parameter Name="Source" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GpsUpdate">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="DateSystem" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEvent" Mode="In" Type="DateTime" />
+      <Parameter Name="Latitude" Mode="In" Type="Double" />
+      <Parameter Name="Longitude" Mode="In" Type="Double" />
+      <Parameter Name="Battery" Mode="In" Type="Int32" />
+      <Parameter Name="Source" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CTL_ROLES" EntityType="MPatricioCentauroModel.CTL_ROLES" />
+    <FunctionImport Name="UserDelete">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CTL_USERS" EntityType="MPatricioCentauroModel.CTL_USERS" />
+    <AssociationSet Name="FK__CTL_USERS__IdRol__1B0907CE" Association="MPatricioCentauroModel.FK__CTL_USERS__IdRol__1B0907CE">
+      <End Role="CTL_ROLES" EntitySet="CTL_ROLES" />
+      <End Role="CTL_USERS" EntitySet="CTL_USERS" />
+    </AssociationSet>
+    <FunctionImport Name="UserAdd">
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="SurName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="contrasena" Mode="In" Type="String" />
+      <Parameter Name="Parent" Mode="In" Type="Int32" />
+      <Parameter Name="Estatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserUpdate">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="SurName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="contrasena" Mode="In" Type="String" />
+      <Parameter Name="Parent" Mode="In" Type="Int32" />
+      <Parameter Name="Estatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetAll" ReturnType="Collection(MPatricioCentauroModel.UserGetAll_Result4)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="SurName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetById" ReturnType="Collection(MPatricioCentauroModel.UserGetById_Result3)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GpsGetAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="DateSystem" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="DateEvent" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="Int32" Name="Battery" Nullable="true" />
+    <Property Type="Int32" Name="Source" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GpsGetById_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="DateSystem" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="DateEvent" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="Int32" Name="Battery" Nullable="true" />
+    <Property Type="Int32" Name="Source" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="CTL_ROLES">
+    <Key>
+      <PropertyRef Name="IdRole" />
+    </Key>
+    <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CTL_USERS" Relationship="MPatricioCentauroModel.FK__CTL_USERS__IdRol__1B0907CE" FromRole="CTL_ROLES" ToRole="CTL_USERS" />
+  </EntityType>
+  <ComplexType Name="UserGetAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetById_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetAll_Result1">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetAll_Result2">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetAll_Result3">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetById_Result1">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="Binary" Name="contrasena" Nullable="false" MaxLength="8000" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="CTL_USERS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRole" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SurName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="contrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Parent" Type="Int32" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CTL_ROLES" Relationship="MPatricioCentauroModel.FK__CTL_USERS__IdRol__1B0907CE" FromRole="CTL_USERS" ToRole="CTL_ROLES" />
+  </EntityType>
+  <Association Name="FK__CTL_USERS__IdRol__1B0907CE">
+    <End Type="MPatricioCentauroModel.CTL_ROLES" Role="CTL_ROLES" Multiplicity="0..1" />
+    <End Type="MPatricioCentauroModel.CTL_USERS" Role="CTL_USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CTL_ROLES">
+        <PropertyRef Name="IdRole" />
+      </Principal>
+      <Dependent Role="CTL_USERS">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="UserGetAll_Result4">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetById_Result2">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserGetById_Result3">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="SurName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="Int32" Name="Estatus" Nullable="false" />
+  </ComplexType>
+</Schema>

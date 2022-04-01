@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MPatricioCentauroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTL_ROLES">
+    <Key>
+      <PropertyRef Name="IdRole" />
+    </Key>
+    <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CTL_USERS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRole" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" />
+    <Property Name="SurName" Type="varchar" MaxLength="25" />
+    <Property Name="Email" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parent" Type="int" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MPatricioCentauro.dbo.GPS_DATA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GPS_DATA">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DateSystem" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateSystem" Type="datetime" Nullable="false" />
+    <Property Name="DateEvent" Type="datetime" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="Battery" Type="int" />
+    <Property Name="Source" Type="int" />
+    <Property Name="Tipo" Type="int" />
+  </EntityType>
+  <Association Name="FK__CTL_USERS__IdRol__1B0907CE">
+    <End Role="CTL_ROLES" Type="Self.CTL_ROLES" Multiplicity="0..1" />
+    <End Role="CTL_USERS" Type="Self.CTL_USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CTL_ROLES">
+        <PropertyRef Name="IdRole" />
+      </Principal>
+      <Dependent Role="CTL_USERS">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GpsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateSystem" Type="datetime" Mode="In" />
+    <Parameter Name="DateEvent" Type="datetime" Mode="In" />
+    <Parameter Name="Latitude" Type="float" Mode="In" />
+    <Parameter Name="Longitude" Type="float" Mode="In" />
+    <Parameter Name="Battery" Type="int" Mode="In" />
+    <Parameter Name="Source" Type="int" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GpsDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GpsGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GpsGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GpsUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="DateSystem" Type="datetime" Mode="In" />
+    <Parameter Name="DateEvent" Type="datetime" Mode="In" />
+    <Parameter Name="Latitude" Type="float" Mode="In" />
+    <Parameter Name="Longitude" Type="float" Mode="In" />
+    <Parameter Name="Battery" Type="int" Mode="In" />
+    <Parameter Name="Source" Type="int" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdRole" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="SurName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="contrasena" Type="varchar" Mode="In" />
+    <Parameter Name="Parent" Type="int" Mode="In" />
+    <Parameter Name="Estatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="SurName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UserGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdRole" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="SurName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="contrasena" Type="varchar" Mode="In" />
+    <Parameter Name="Parent" Type="int" Mode="In" />
+    <Parameter Name="Estatus" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MPatricioCentauroModelStoreContainer">
+    <EntitySet Name="CTL_ROLES" EntityType="Self.CTL_ROLES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTL_USERS" EntityType="Self.CTL_USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPS_DATA" EntityType="Self.GPS_DATA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GPS_DATA].[Id] AS [Id], 
+    [GPS_DATA].[DateSystem] AS [DateSystem], 
+    [GPS_DATA].[DateEvent] AS [DateEvent], 
+    [GPS_DATA].[Latitude] AS [Latitude], 
+    [GPS_DATA].[Longitude] AS [Longitude], 
+    [GPS_DATA].[Battery] AS [Battery], 
+    [GPS_DATA].[Source] AS [Source], 
+    [GPS_DATA].[Tipo] AS [Tipo]
+    FROM [dbo].[GPS_DATA] AS [GPS_DATA]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__CTL_USERS__IdRol__1B0907CE" Association="Self.FK__CTL_USERS__IdRol__1B0907CE">
+      <End Role="CTL_ROLES" EntitySet="CTL_ROLES" />
+      <End Role="CTL_USERS" EntitySet="CTL_USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

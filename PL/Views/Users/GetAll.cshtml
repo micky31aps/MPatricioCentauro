@@ -1,0 +1,84 @@
+﻿@model ML.Users
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuarios</h2>
+
+
+<div class="form-row">
+    <!--Cambiar el fomrulario -->
+    @using (Html.BeginForm("GetAll", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.SurName)
+            @Html.TextBoxFor(model => model.SurName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SurName)
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="col-md-2">
+            <br />
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    }
+</div>
+<br />
+@*<div class="row">*@
+<div style="float:right;">
+    <br />
+    <br />
+    @Html.ActionLink("Agregar", "Form", "Users", htmlAttributes: new { @class = "btn btn-success" })
+</div>
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <td>Editar</td>
+            <td class="hidden">IdUser</td>
+            <td class="hidden">IdRole</td>
+            <td>Role</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>UserName</td>
+            <td>Contraseña</td>
+            <td>Parent</td>
+            <td>Estatus</td>
+            <td>Eliminar</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Users user in Model.Usuarios)
+        {
+            <tr>
+                <td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Users", new { Id = user.Id })"></a></td>
+                <td class="hidden">@user.Id</td>
+                <td class="hidden">@user.Roles.IdRole</td>
+                <td>@user.Roles.RoleName</td>
+                <td>@user.Name @user.LastName @user.SurName</td>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>@user.contrasena</td>
+                <td>@user.Parent</td>
+                <td>@user.Estatus</td>
+                <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Users", new { Id = user.Id })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

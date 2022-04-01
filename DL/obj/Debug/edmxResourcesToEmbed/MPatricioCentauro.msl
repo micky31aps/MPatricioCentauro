@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MPatricioCentauroModelStoreContainer" CdmEntityContainer="MPatricioCentauroEntities">
+    <EntitySetMapping Name="GPS_DATA">
+      <EntityTypeMapping TypeName="MPatricioCentauroModel.GPS_DATA">
+        <MappingFragment StoreEntitySet="GPS_DATA">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateSystem" ColumnName="DateSystem" />
+          <ScalarProperty Name="DateEvent" ColumnName="DateEvent" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GpsDelete" FunctionName="MPatricioCentauroModel.Store.GpsDelete" />
+    <FunctionImportMapping FunctionImportName="GpsGetAll" FunctionName="MPatricioCentauroModel.Store.GpsGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MPatricioCentauroModel.GpsGetAll_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateSystem" ColumnName="DateSystem" />
+          <ScalarProperty Name="DateEvent" ColumnName="DateEvent" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GpsGetById" FunctionName="MPatricioCentauroModel.Store.GpsGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MPatricioCentauroModel.GpsGetById_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateSystem" ColumnName="DateSystem" />
+          <ScalarProperty Name="DateEvent" ColumnName="DateEvent" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GpsAdd" FunctionName="MPatricioCentauroModel.Store.GpsAdd" />
+    <FunctionImportMapping FunctionImportName="GpsUpdate" FunctionName="MPatricioCentauroModel.Store.GpsUpdate" />
+    <EntitySetMapping Name="CTL_ROLES">
+      <EntityTypeMapping TypeName="MPatricioCentauroModel.CTL_ROLES">
+        <MappingFragment StoreEntitySet="CTL_ROLES">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UserDelete" FunctionName="MPatricioCentauroModel.Store.UserDelete" />
+    <EntitySetMapping Name="CTL_USERS">
+      <EntityTypeMapping TypeName="MPatricioCentauroModel.CTL_USERS">
+        <MappingFragment StoreEntitySet="CTL_USERS">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SurName" ColumnName="SurName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UserAdd" FunctionName="MPatricioCentauroModel.Store.UserAdd" />
+    <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="MPatricioCentauroModel.Store.UserUpdate" />
+    <FunctionImportMapping FunctionImportName="UserGetAll" FunctionName="MPatricioCentauroModel.Store.UserGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MPatricioCentauroModel.UserGetAll_Result4">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SurName" ColumnName="SurName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserGetById" FunctionName="MPatricioCentauroModel.Store.UserGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MPatricioCentauroModel.UserGetById_Result3">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SurName" ColumnName="SurName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
